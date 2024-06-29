@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SwiftUiSandbox/SwiftUiSandbox.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SwiftPythonEmbed/SwiftPythonEmbed.xcodeproj">
    </FileRef>
 </Workspace>
