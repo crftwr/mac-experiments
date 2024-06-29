@@ -14,6 +14,10 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            Button("Test"){
+                let result = HelloFromCpp(123)
+                print(String(format: "Result from C++: %d", result))
+            }
         }
         .padding()
     }
