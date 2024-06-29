@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+    
+    @State var msg = "いいね"
+    @State var input = ""
 
-        @State var msg = "いいね"
-        @State var input = ""
+    var body: some View {
 
         NavigationStack{
             VStack {
@@ -56,10 +57,10 @@ struct ContentView: View {
 }
 
 struct SubView: View {
-    var body: some View {
-        
-        let cinema = ["Movie1", "Movie2", "Movie3"]
 
+    let cinema = ["Movie1", "Movie2", "Movie3"]
+
+    var body: some View {
         VStack{
             VStack{
                 Spacer()
