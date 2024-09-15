@@ -33,4 +33,13 @@ private:
     int base;
 };
 
+class PythonEmbed
+{
+public:
+    PythonEmbed();
+    virtual ~PythonEmbed();
+    
+    int CallFunc();
+};
+
 #endif /* CppBridge_hpp */

@@ -12,6 +12,7 @@
 		B19B0AD92C30412F00CA2E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B19B0AD82C30412F00CA2E54 /* Assets.xcassets */; };
 		B19B0ADC2C30412F00CA2E54 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B19B0ADB2C30412F00CA2E54 /* Preview Assets.xcassets */; };
 		B19B0AE62C30485B00CA2E54 /* CppBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B19B0AE42C30485B00CA2E54 /* CppBridge.cpp */; };
+		B1DEA1DE2C97381300B5B71D /* Python in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DEA1DB2C97347600B5B71D /* Python */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		B19B0AE32C30485B00CA2E54 /* SwiftPythonEmbed-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftPythonEmbed-Bridging-Header.h"; sourceTree = "<group>"; };
 		B19B0AE42C30485B00CA2E54 /* CppBridge.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CppBridge.cpp; sourceTree = "<group>"; };
 		B19B0AE52C30485B00CA2E54 /* CppBridge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CppBridge.hpp; sourceTree = "<group>"; };
+		B1DEA1D72C972C9200B5B71D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B1DEA1D92C97341600B5B71D /* Python3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python3.framework; path = Library/Frameworks/Python3.framework; sourceTree = DEVELOPER_DIR; };
+		B1DEA1DB2C97347600B5B71D /* Python */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Python; path = ../../../../../Library/Frameworks/Python.framework/Versions/3.12/Python; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1DEA1DE2C97381300B5B71D /* Python in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +45,10 @@
 		B19B0AC82C30412E00CA2E54 = {
 			isa = PBXGroup;
 			children = (
+				B1DEA1D72C972C9200B5B71D /* README.md */,
 				B19B0AD32C30412E00CA2E54 /* SwiftPythonEmbed */,
 				B19B0AD22C30412E00CA2E54 /* Products */,
+				B1DEA1D82C97341600B5B71D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +81,15 @@
 				B19B0ADB2C30412F00CA2E54 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B1DEA1D82C97341600B5B71D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1DEA1DB2C97347600B5B71D /* Python */,
+				B1DEA1D92C97341600B5B71D /* Python3.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,11 +305,13 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks/Python.framework/Versions/3.12/include/python3.12";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks/Python.framework/Versions/3.12";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = crftwr.SwiftPythonEmbed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -320,11 +338,13 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks/Python.framework/Versions/3.12/include/python3.12";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks/Python.framework/Versions/3.12";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = crftwr.SwiftPythonEmbed;
 				PRODUCT_NAME = "$(TARGET_NAME)";

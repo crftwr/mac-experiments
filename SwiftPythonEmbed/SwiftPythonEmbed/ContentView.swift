@@ -24,6 +24,10 @@ struct ContentView: View {
                 var cpp_hello = HelloClass(1000)
                 result = cpp_hello.SayHello(123)
                 print(String(format: "Result from C++ class: %d", result))
+                
+                var python_embed = PythonEmbed()
+                result = python_embed.CallFunc()
+                print(String(format: "Result from Python code: %d", result))
             }
         }
         .padding()
