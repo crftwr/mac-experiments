@@ -14,6 +14,23 @@
 #define EXTERN_C
 #endif
 
-EXTERN_C int HelloFromCpp( int n );
+EXTERN_C int HelloFuncC( int n );
+
+int HelloFuncCpp( int n );
+
+class HelloClass
+{
+private:
+    HelloClass();
+
+public:
+    HelloClass(int base);
+    virtual ~HelloClass();
+
+    int SayHello(int n);
+    
+private:
+    int base;
+};
 
 #endif /* CppBridge_hpp */

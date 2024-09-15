@@ -15,8 +15,15 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
             Button("Test"){
-                let result = HelloFromCpp(123)
-                print(String(format: "Result from C++: %d", result))
+                var result = HelloFuncC(123)
+                print(String(format: "Result from C func: %d", result))
+
+                result = HelloFuncCpp(123)
+                print(String(format: "Result from C++ func: %d", result))
+
+                var cpp_hello = HelloClass(1000)
+                result = cpp_hello.SayHello(123)
+                print(String(format: "Result from C++ class: %d", result))
             }
         }
         .padding()
