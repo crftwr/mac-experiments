@@ -22,10 +22,8 @@ struct ContentView: View {
             }
             Button("Uninstall keyboard hook"){
 
-                if let existing_keyboard_hook = keyboard_hook {
-                    existing_keyboard_hook.Uninstall()
-                    keyboard_hook = nil
-                }
+                keyboard_hook?.Uninstall()
+                keyboard_hook = nil
             }
         }
         .padding()
