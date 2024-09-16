@@ -9,6 +9,7 @@ import Foundation
 import CoreGraphics
 import Cocoa
 
+// FIXME: move this to instance method
 func _KeyHookCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
     
     if [.keyDown, .keyUp].contains(type) {
@@ -40,7 +41,7 @@ struct KeyboardHook {
             options: CGEventTapOptions.defaultTap,
             eventsOfInterest: CGEventMask(eventMask),
             callback: _KeyHookCallback,
-            userInfo: nil
+            userInfo: nil // FIXME : use userInfo to call instance method
         )
         
         if eventTap==nil {
