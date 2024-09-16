@@ -11,6 +11,7 @@
 		FE092DFB2C97CAD20085C8E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE092DFA2C97CAD20085C8E6 /* ContentView.swift */; };
 		FE092DFD2C97CAD30085C8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE092DFC2C97CAD30085C8E6 /* Assets.xcassets */; };
 		FE092E002C97CAD30085C8E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE092DFF2C97CAD30085C8E6 /* Preview Assets.xcassets */; };
+		FE092E082C97CD080085C8E6 /* KeyboardHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE092E072C97CD080085C8E6 /* KeyboardHook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		FE092DFC2C97CAD30085C8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE092DFF2C97CAD30085C8E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FE092E012C97CAD30085C8E6 /* AccessibilityHooks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AccessibilityHooks.entitlements; sourceTree = "<group>"; };
+		FE092E072C97CD080085C8E6 /* KeyboardHook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				FE092DF82C97CAD20085C8E6 /* AccessibilityHooksApp.swift */,
 				FE092DFA2C97CAD20085C8E6 /* ContentView.swift */,
+				FE092E072C97CD080085C8E6 /* KeyboardHook.swift */,
 				FE092DFC2C97CAD30085C8E6 /* Assets.xcassets */,
 				FE092E012C97CAD30085C8E6 /* AccessibilityHooks.entitlements */,
 				FE092DFE2C97CAD30085C8E6 /* Preview Content */,
@@ -141,6 +144,7 @@
 			files = (
 				FE092DFB2C97CAD20085C8E6 /* ContentView.swift in Sources */,
 				FE092DF92C97CAD20085C8E6 /* AccessibilityHooksApp.swift in Sources */,
+				FE092E082C97CD080085C8E6 /* KeyboardHook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
