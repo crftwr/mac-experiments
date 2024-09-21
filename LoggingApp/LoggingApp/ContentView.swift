@@ -8,11 +8,14 @@
 import SwiftUI
 import OSLog
 
-struct ContentView: View {    
+struct ContentView: View {
     var body: some View {
         VStack {
             Button("Logging test"){
-                Logger.generic.notice("Log from OSLog")
+
+                Logger.generic.info("Log from OSLog - info")
+                Logger.generic.notice("Log from OSLog - notice")
+                Logger.generic.critical("Log from OSLog - critical")
             }
         }
         .padding()
