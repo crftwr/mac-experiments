@@ -11,19 +11,32 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button("Install keyboard hook"){
-                
-                if keyboard_hook != nil {
+
+                if self.keyboard_hook != nil {
                     print("Keyboard hook is already installed.")
                     return
                 }
                 
-                keyboard_hook = KeyboardHook()
-                keyboard_hook!.install()
+                self.keyboard_hook = KeyboardHook()
+                if let keyboard_hook = self.keyboard_hook {
+                    keyboard_hook.install()
+                }
             }
+            
             Button("Uninstall keyboard hook"){
+                
+                if let keyboard_hook = self.keyboard_hook {
+                    keyboard_hook.uninstall()
+                }
+                
+                self.keyboard_hook = nil
+            }
+            
+            Button("Send key event"){
 
-                keyboard_hook?.uninstall()
-                keyboard_hook = nil
+                if let keyboard_hook = self.keyboard_hook {
+                    keyboard_hook.sendKey()
+                }
             }
         }
         .padding()

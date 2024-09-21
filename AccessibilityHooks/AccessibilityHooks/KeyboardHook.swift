@@ -43,6 +43,8 @@ class KeyboardHook {
 
         CFRunLoopAddSource(CFRunLoopGetCurrent(), self.runLoopSource, .commonModes)
         CGEvent.tapEnable(tap: self.eventTap!, enable: true)
+        
+        self.eventSource = CGEventSource(stateID: CGEventSourceStateID.privateState)
     }
     
     func uninstall() {
@@ -56,8 +58,9 @@ class KeyboardHook {
             CFRunLoopRemoveSource(CFRunLoopGetCurrent(), runLoopSource, CFRunLoopMode.commonModes)
         }
 
-        self.runLoopSource = nil;
-        self.eventTap = nil;
+        self.eventSource = nil
+        self.runLoopSource = nil
+        self.eventTap = nil
     }
 
     func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent) -> Unmanaged<CGEvent>? {
@@ -77,8 +80,18 @@ class KeyboardHook {
         }
         return Unmanaged.passUnretained(event)
     }
+    
+    func sendKey() {
+        
+        let keydown_event = CGEvent(keyboardEventSource: eventSource, virtualKey: 179, keyDown: true)!
+        let keyup_event = CGEvent(keyboardEventSource: eventSource, virtualKey: 179, keyDown: false)!
+        
+        keydown_event.post(tap: CGEventTapLocation.cghidEventTap)
+        keyup_event.post(tap: CGEventTapLocation.cghidEventTap)
+    }
 
-    var eventTap: CFMachPort? = nil;
-    var runLoopSource: CFRunLoopSource? = nil;
+    var eventTap: CFMachPort?
+    var runLoopSource: CFRunLoopSource?
+    var eventSource: CGEventSource?
 }
 
