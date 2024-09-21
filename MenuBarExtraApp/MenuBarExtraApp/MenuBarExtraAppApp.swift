@@ -15,7 +15,8 @@ struct MenuBarExtraAppApp: App {
             MyMenu()
         }
 
-        WindowGroup {
+        // Use Window instead of WindowGroup to open only 1 window at most
+        Window("Main", id: "main") {
             ContentView()
         }
     }

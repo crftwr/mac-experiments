@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MyMenu: View {
+    
+    @Environment(\.openWindow) private var openWindow
+    
     var body: some View {
-        Button("Test1"){
-            print("Test1")
+        Button("Open Main Window"){
+            openWindow(id: "main")
         }.keyboardShortcut("1")
-        Button("Test2"){
-            print("Test2")
-        }
-        
+
         Divider()
         
         Menu("Submenu") {
