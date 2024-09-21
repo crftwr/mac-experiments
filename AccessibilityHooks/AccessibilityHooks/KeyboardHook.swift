@@ -7,63 +7,77 @@
 
 import Foundation
 import CoreGraphics
-import Cocoa
 
-// FIXME: move this to instance method
-func _KeyHookCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
+class KeyboardHook {
     
-    if [.keyDown, .keyUp].contains(type) {
-        
-        var keyCode = event.getIntegerValueField(.keyboardEventKeycode)
-        print( "EventType \(type), KeyCode \(keyCode)" )
-
-        // Test swap A and B
-        if keyCode == 0 {
-            keyCode = 11
-        } else if keyCode == 11 {
-            keyCode = 0
-        }
-        event.setIntegerValueField(.keyboardEventKeycode, value: keyCode)
-    }
-    return Unmanaged.passUnretained(event)
-}
-
-struct KeyboardHook {
-    
-    mutating func Install() {
+    func install() {
         print("KeyboardHook.Install()")
-        
+
         let eventMask = (1 << CGEventType.keyDown.rawValue) | (1 << CGEventType.keyUp.rawValue) | (1 << CGEventType.flagsChanged.rawValue)
         
-        eventTap = CGEvent.tapCreate(
+        func _callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
+            let keyboard_hook = Unmanaged<KeyboardHook>.fromOpaque(refcon!).takeUnretainedValue()
+            return keyboard_hook.callback(proxy: proxy, type: type, event: event)
+        }
+
+        self.eventTap = CGEvent.tapCreate(
             tap: CGEventTapLocation.cgSessionEventTap,
             place: CGEventTapPlacement.headInsertEventTap,
             options: CGEventTapOptions.defaultTap,
             eventsOfInterest: CGEventMask(eventMask),
-            callback: _KeyHookCallback,
-            userInfo: nil // FIXME : use userInfo to call instance method
+            callback: _callback,
+            userInfo: Unmanaged.passRetained(self).toOpaque()
         )
         
-        if eventTap==nil {
+        if self.eventTap==nil {
             print("Failed to create event tap")
             return
         }
         
-        runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
-        CGEvent.tapEnable(tap: eventTap!, enable: true)
-    }
-    
-    mutating func Uninstall() {
-        print("KeyboardHook.Uninstall()")
-                
-        CGEvent.tapEnable(tap: eventTap!, enable: false)
-        CFRunLoopRemoveSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
+        self.runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, self.eventTap, 0)
 
-        runLoopSource = nil;
-        eventTap = nil;
+        if self.runLoopSource==nil {
+            print("Failed to create RunLoopSource")
+            return
+        }
+
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), self.runLoopSource, .commonModes)
+        CGEvent.tapEnable(tap: self.eventTap!, enable: true)
     }
     
+    func uninstall() {
+        print("KeyboardHook.Uninstall()")
+        
+        if let eventTap = self.eventTap {
+            CGEvent.tapEnable(tap: eventTap, enable: false)
+        }
+
+        if let runLoopSource = self.runLoopSource {
+            CFRunLoopRemoveSource(CFRunLoopGetCurrent(), runLoopSource, CFRunLoopMode.commonModes)
+        }
+
+        self.runLoopSource = nil;
+        self.eventTap = nil;
+    }
+
+    func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent) -> Unmanaged<CGEvent>? {
+        
+        if [CGEventType.keyDown, CGEventType.keyUp].contains(type) {
+            
+            var keyCode = event.getIntegerValueField(.keyboardEventKeycode)
+            print( "EventType \(type), KeyCode \(keyCode)" )
+
+            // Test swap A and B
+            if keyCode == 0 {
+                keyCode = 11
+            } else if keyCode == 11 {
+                keyCode = 0
+            }
+            event.setIntegerValueField(.keyboardEventKeycode, value: keyCode)
+        }
+        return Unmanaged.passUnretained(event)
+    }
+
     var eventTap: CFMachPort? = nil;
     var runLoopSource: CFRunLoopSource? = nil;
 }

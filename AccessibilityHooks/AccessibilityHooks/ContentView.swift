@@ -18,11 +18,11 @@ struct ContentView: View {
                 }
                 
                 keyboard_hook = KeyboardHook()
-                keyboard_hook!.Install()
+                keyboard_hook!.install()
             }
             Button("Uninstall keyboard hook"){
 
-                keyboard_hook?.Uninstall()
+                keyboard_hook?.uninstall()
                 keyboard_hook = nil
             }
         }
