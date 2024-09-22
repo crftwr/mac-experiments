@@ -16,27 +16,43 @@ struct TabContent1: View {
 
         NavigationLink("Navigation link", destination: NavigationDestinationView())
 
-        Image(systemName: "globe")
-            .imageScale(.large)
-            .foregroundColor(.orange)
-        
-        Text("Hello, world!")
-            .foregroundColor(.green)
-            .background(.blue)
-        
         HStack{
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundColor(.orange)
+                .frame(width:30, height:30)
+
+            Image("account-icon")
+                .resizable()
+                .frame(width:30, height:30)
+        }
+
+        HStack{
+            Text("Hello, world!")
+                .foregroundColor(.green)
+                .background(.blue)
             Text("こんにちは").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
             Text("お元気ですか？").foregroundColor(.red)
         }
         
-        Text(msg)
-        Button("Change text message"){
-            msg = "最高"
+        Spacer()
+
+        Text("This is regular text. This is **bold** text, this is *italic* text, and this is ***bold, italic*** text. ~~A strikethrough example~~. `Monospaced works too`. Visit Apple: [click here](https://apple.com)").textSelection(.enabled)
+
+        Spacer()
+
+        HStack{
+            Button("Change text message"){
+                msg = "最高"
+            }
+            Text(msg)
         }
         
         TextField("何かを入力してください:", text:$input)
         Text(input)
         
+        Spacer()
+
         List{
             Text("Item1")
             Text("Item2")
@@ -44,10 +60,7 @@ struct TabContent1: View {
             Text("Item4")
             Text("Item5")
         }
-        
-        Image("account-icon")
-            .resizable()
-            .frame(width:50, height:50)
+        .listStyle(.sidebar)
     }
 }
 
@@ -57,12 +70,10 @@ struct NavigationDestinationView: View {
 
     var body: some View {
         VStack{
-            VStack{
+            Spacer()
+            ForEach(cinema, id: \.self){
+                item in Text(item)
                 Spacer()
-                ForEach(cinema, id: \.self){
-                    item in Text(item)
-                    Spacer()
-                }
             }
         }
     }
