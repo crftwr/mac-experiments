@@ -9,7 +9,20 @@ import SwiftUI
 
 struct TabContent3: View {
     
+    @State var message = ""
+    @State var count = 0
+
     var body: some View {
-        Text("Content3")
+        
+        Button("Add a line"){
+            let now = Date()
+            self.count += 1
+            
+            let new_line = "\(now) \(count)\n"
+            message += new_line
+        }
+
+        TextEditor(text: $message)
+            .border(Color.black)
     }
 }
