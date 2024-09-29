@@ -81,7 +81,7 @@ class SwiftTermViewController: NSViewController, LocalProcessTerminalViewDelegat
     
     func updateLogging ()
     {
-//        let path = logging ? "/Users/miguel/Downloads/Logs" : nil
+//        let path = logging ? "/Users/crftwr/Downloads/Logs" : nil
 //        terminal.setHostLogging (directory: path)
         NSUserDefaultsController.shared.defaults.set (logging, forKey: "LogHostOutput")
     }
