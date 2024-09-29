@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE1AFEB92CA92DE3002098ED /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = FE1AFEB82CA92DE3002098ED /* SwiftTerm */; };
-		FEB801F32CA9EBFA003CC575 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = FEB801F22CA9EBFA003CC575 /* SwiftTerm */; };
+		FE4061BE2CA9F40300BC57BD /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = FE4061BD2CA9F40300BC57BD /* SwiftTerm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEB801F32CA9EBFA003CC575 /* SwiftTerm in Frameworks */,
-				FE1AFEB92CA92DE3002098ED /* SwiftTerm in Frameworks */,
+				FE4061BE2CA9F40300BC57BD /* SwiftTerm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +70,7 @@
 			);
 			name = SwiftTermEmbed;
 			packageProductDependencies = (
-				FE1AFEB82CA92DE3002098ED /* SwiftTerm */,
-				FEB801F22CA9EBFA003CC575 /* SwiftTerm */,
+				FE4061BD2CA9F40300BC57BD /* SwiftTerm */,
 			);
 			productName = SwiftTermEmbed;
 			productReference = FE9E780D2CA91E0500814B0A /* SwiftTermEmbed.app */;
@@ -104,7 +101,7 @@
 			mainGroup = FE9E78042CA91E0500814B0A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				FE1AFEB72CA92DE3002098ED /* XCLocalSwiftPackageReference "../../SwiftTerm" */,
+				FE4061BC2CA9F40300BC57BD /* XCLocalSwiftPackageReference "../../SwiftTerm" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FE9E780E2CA91E0500814B0A /* Products */;
@@ -333,18 +330,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FE1AFEB72CA92DE3002098ED /* XCLocalSwiftPackageReference "../../SwiftTerm" */ = {
+		FE4061BC2CA9F40300BC57BD /* XCLocalSwiftPackageReference "../../SwiftTerm" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../SwiftTerm;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FE1AFEB82CA92DE3002098ED /* SwiftTerm */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SwiftTerm;
-		};
-		FEB801F22CA9EBFA003CC575 /* SwiftTerm */ = {
+		FE4061BD2CA9F40300BC57BD /* SwiftTerm */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftTerm;
 		};
