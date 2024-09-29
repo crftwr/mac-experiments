@@ -267,7 +267,7 @@ class SwiftTermViewController: NSViewController, LocalProcessTerminalViewDelegat
     {
         let savePanel = NSSavePanel ()
         savePanel.canCreateDirectories = true
-        savePanel.allowedFileTypes = ["txt"]
+        savePanel.allowedContentTypes = [.text]
         savePanel.title = "Export Buffer Contents As Text"
         savePanel.nameFieldStringValue = "TerminalCapture"
         
