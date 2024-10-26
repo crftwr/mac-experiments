@@ -8,23 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let termViewKey = UUID().uuidString
+    
     var body: some View {
         VStack {
             
             HStack {
-                Button("Test1"){
-                    if let term = SwiftTermView.table["123"] {
-                        term.test()
+                Button("Run test command (ls)"){
+
+                    let view = SwiftTermView.lookup(termViewKey)
+                    if let view = view {
+                        if let term = view as? SwiftTermView {
+                            term.test()
+                        }
                     }
-                }
-                Button("Test2"){
-                }
-                Button("Test3"){
                 }
             }.padding()
             
             SwiftTermView()
-                .setKey("123")
+                .lookupKey(termViewKey)
 
         }.padding()
     }
