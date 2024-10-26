@@ -11,8 +11,24 @@ struct SwiftTermView: NSViewControllerRepresentable {
     
     typealias NSViewControllerType = SwiftTermViewController
     
+    static var table: [String: SwiftTermView] = [:]
+    let viewController: SwiftTermViewController = SwiftTermViewController()
+    
+    init() {
+        print("SwiftTermView initialized")
+    }
+    
+    func setKey(_ key: String) -> Self {
+        SwiftTermView.table[key] = self
+        return self
+    }
+    
+    func test() {
+        print("SwiftTermView test")
+        viewController.test()
+    }
+    
     func makeNSViewController(context: Context) -> SwiftTermViewController {
-        let viewController = SwiftTermViewController()
         return viewController
     }
     

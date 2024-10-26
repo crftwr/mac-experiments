@@ -13,6 +13,9 @@ struct ContentView: View {
             
             HStack {
                 Button("Test1"){
+                    if let term = SwiftTermView.table["123"] {
+                        term.test()
+                    }
                 }
                 Button("Test2"){
                 }
@@ -21,6 +24,8 @@ struct ContentView: View {
             }.padding()
             
             SwiftTermView()
+                .setKey("123")
+
         }.padding()
     }
 }

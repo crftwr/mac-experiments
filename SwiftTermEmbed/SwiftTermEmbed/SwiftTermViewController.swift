@@ -116,6 +116,10 @@ class SwiftTermViewController: NSViewController, LocalProcessTerminalViewDelegat
     func test () {
         let a = Terminal (delegate: TD ())
         print (a)
+        
+        if let terminal = terminal {
+            terminal.send(txt: "ls -al\n")
+        }
     }
     
     override func viewDidLoad() {
