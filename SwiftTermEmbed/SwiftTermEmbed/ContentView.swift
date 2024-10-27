@@ -15,15 +15,27 @@ struct ContentView: View {
         VStack {
             
             HStack {
+
                 Button("Run test command (ls)"){
 
                     let view = SwiftTermView.lookup(termViewKey)
                     if let view = view {
                         if let term = view as? SwiftTermView {
-                            term.test()
+                            term.viewController.testRunShellCommand(cmd: "ls -al")
                         }
                     }
                 }
+
+                Button("Print Hello"){
+
+                    let view = SwiftTermView.lookup(termViewKey)
+                    if let view = view {
+                        if let term = view as? SwiftTermView {
+                            term.viewController.testPrint(line: "Hello World!\r\n")
+                        }
+                    }
+                }
+
             }.padding()
             
             SwiftTermView()

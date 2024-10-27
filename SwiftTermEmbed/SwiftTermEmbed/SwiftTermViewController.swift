@@ -106,6 +106,7 @@ class SwiftTermViewController: NSViewController, LocalProcessTerminalViewDelegat
         return String (cString: pwd.pw_shell)
     }
     
+    /*
     class TD: TerminalDelegate {
         func send(source: Terminal, data: ArraySlice<UInt8>) {
         }
@@ -121,10 +122,23 @@ class SwiftTermViewController: NSViewController, LocalProcessTerminalViewDelegat
             terminal.send(txt: "ls -al\n")
         }
     }
+    */
+    
+    func testPrint( line: String ) {
+        if let terminal = terminal {
+            terminal.feed(text: line)
+        }
+    }
+    
+    func testRunShellCommand( cmd: String ) {
+        if let terminal = terminal {
+            terminal.send(txt: cmd + "\n")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        test ()
+        //test ()
         terminal = LocalProcessTerminalView(frame: view.frame)
         zoomGesture = NSMagnificationGestureRecognizer(target: self, action: #selector(zoomGestureHandler))
         terminal.addGestureRecognizer(zoomGesture!)

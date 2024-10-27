@@ -13,11 +13,6 @@ struct SwiftTermView: NSViewControllerRepresentable {
     
     let viewController: SwiftTermViewController = SwiftTermViewController()
     
-    func test() {
-        print("SwiftTermView test")
-        viewController.test()
-    }
-    
     func makeNSViewController(context: Context) -> SwiftTermViewController {
         return viewController
     }
