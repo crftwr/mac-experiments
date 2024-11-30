@@ -9,12 +9,7 @@ import SwiftUI
 
 struct TabContent3: View {
     
-    enum Field: Hashable {
-        case textField
-        //case list
-    }
-    
-    @FocusState private var focusedField: Field?
+    @FocusState private var focused: Bool
     @State private var focusedListItem: Int = 0
 
     
@@ -30,13 +25,26 @@ struct TabContent3: View {
                 .imageScale(.medium)
                 .frame(width: 16, height: 8, alignment: .center)
             TextField("Search", text: $searchText)
-                .focused($focusedField, equals: .textField)
+                .textFieldStyle(.plain)
+                .background(Color.white)
+                .focusable()
+                //.focused($focusedField, equals: .textField)
+                .focused($focused)
                 .onChange(of: searchText) { oldValue, newValue in
                     focusedListItem = 0
                 }
         }
         .onAppear() {
-            focusedField = .textField
+            focused = true
+        }
+        .onKeyPress(characters: .capitalizedLetters) { event in
+            print("char event \(event)")
+            return .ignored
+        }
+        .onKeyPress(keys: [.upArrow, .downArrow]) { event in
+            print("key event \(event)")
+            
+            return .ignored
         }
         .onKeyPress(.upArrow) {
 
